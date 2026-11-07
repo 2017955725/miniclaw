@@ -307,3 +307,5 @@ npm run desktop:build
 ## License
 
 Miniclaw ä½¿ç”¨ MIT Licenseï¼Œè¯¦è§ [`LICENSE`](LICENSE)ã€‚
+
+Miniclaw ²ÉÓÃÖÇÄÜÌåÓÅÏÈ¹¤×÷Ä£ĞÍ£¬ÈÃ Agent¡¢Workspace¡¢Memory¡¢Tools ºÍ×Ô¶¯»¯ÈÎÎñÎ§ÈÆ³ÖĞøÖ´ĞĞµÄ¹¤×÷Á÷Ğ­Í¬ÔËĞĞ¡£
