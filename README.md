@@ -309,3 +309,5 @@ npm run desktop:build
 Miniclaw 使用 MIT License，详见 [`LICENSE`](LICENSE)。
 
 Miniclaw �������������ȹ���ģ�ͣ��� Agent��Workspace��Memory��Tools ���Զ�������Χ�Ƴ���ִ�еĹ�����Эͬ���С�
+
+智能体优先工作模型：Miniclaw 面向个人与团队提供自托管的 AI Agent 工作台。
