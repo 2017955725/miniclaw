@@ -1,11 +1,12 @@
-import type { Model } from '@earendil-works/pi-ai';
 import { getModel } from '@earendil-works/pi-ai/compat';
 import type { ModelRuntime } from '@earendil-works/pi-coding-agent';
+
+type PiModel = NonNullable<ReturnType<ModelRuntime['getModel']>>;
 
 export type PiProviderResolution = {
   providerId: string;
   modelId: string;
-  model: Model<any>;
+  model: PiModel;
 };
 
 function splitModelRef(value: string): { providerId: string; modelId: string } {
@@ -90,7 +91,7 @@ export async function resolvePiProvider(
     (custom
       ? undefined
       : (
-          getModel as unknown as (provider: string, model: string) => Model<any>
+          getModel as unknown as (provider: string, model: string) => PiModel
         )(providerId, split.modelId));
   if (!model) {
     throw new Error(
