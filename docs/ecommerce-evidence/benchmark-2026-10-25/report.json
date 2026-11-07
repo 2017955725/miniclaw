@@ -1,0 +1,1197 @@
+{
+  "benchmark": "current_mysql_deterministic_v1",
+  "generated_at": "2026-10-25T13:01:54.241Z",
+  "workspace": "benchmark:2026-10-25:f623172d-e04f-42af-b579-27c16454315a",
+  "dataset": {
+    "kind": "synthetic",
+    "products": 120,
+    "orders": 2544,
+    "competitors": 270,
+    "tasks": 60,
+    "fixture_sha256": "10f215b7a109993d4890e62bb1f98839dc8980c1d47ae51c08cb585669f6e579"
+  },
+  "protocol": {
+    "calls": "Counterfactual engineering comparison: split product/orders/competitors calls (6 incl. shared start/investigate/decide) versus current start + advance x3 (4). Baseline adapters are benchmark-only, not a restored production implementation. No stochastic LLM policy or SQL query reduction is claimed.",
+    "context": "Paired ablation using the SAME 4 authoritative snapshots: full-state request/response versus ID+revision requests and actual workflowSummary responses. Sum serialized JSON payloads once per event. Excludes system prompt, tool schemas, history retransmission, provider envelopes and model output.",
+    "tokens": "Estimated tokens using the repository estimatePromptTokens (max of ceil(UTF8 bytes/4) and non-ASCII character count). NOT tokenizer counts, billed tokens, SDK compaction savings or total session input.",
+    "correctness": "Exact equality of raw Detect evidence, facts/inferences/unknowns and recommendations; 4 Evidence Chain entries; expected order/competitor counts; compact fields match authoritative state. DOES NOT evaluate semantic answer quality or autonomous model tool selection.",
+    "sql": "Actual MySQL I/O for both branches. Current Detect still executes three domain SELECTs. No reduction in SQL count or latency claim."
+  },
+  "source_sha256": {
+    "src/ecommerce/commerce-service.ts": "db116aa0260b0e34c7ba4e71e968e110c5c29cc654f74d8fbf6e682b6f585a82",
+    "src/ecommerce/workflow.ts": "019be88bac8885b10579774211d30467feffd432494b2fce5e9b1bc0fc5bdcab",
+    "src/ecommerce/agent-dispatch.ts": "1641f78f1fab26e436f53ec76220d4833b977c70adfc32876861586e4100136f",
+    "container/agent-runner/src/commerce-tools.ts": "5051c6ee4d5d788916007e35406f8ab678fe0f0c8cb61091a7c4e1a603e540d2",
+    "container/agent-runner/src/prompt-plan.ts": "d77c5008963ca5fe9091772375ba3927f57ce621517fb34ef04061b68a5160ca"
+  },
+  "runtime_sha256": {
+    "dist/ecommerce/commerce-service.js": "fbc727ee5c56dc85fb7482279c3eef6b940e7e4a359a77dd066093d37d11b6b2",
+    "dist/ecommerce/workflow.js": "36f8b3b83638869c0e2f1216b5a2f092caab634e45a404cf4bafc473dc9986bd",
+    "dist/ecommerce/agent-dispatch.js": "8caa9f41fb8a70383b523e9f397223f11bf4b29af6cbd7b1362c508b75498056",
+    "container/agent-runner/dist/commerce-tools.js": "c78c3d0647b1c3fcae0bb6466b0d9edfa8e5c4221627670b301d187b12744bfc",
+    "container/agent-runner/dist/prompt-plan.js": "0a41b43bfefae902325ad53e52870c2a5480ca4b585b51a197a36f1c645d0dd9"
+  },
+  "totals": {
+    "tasks": 60,
+    "baseline_calls": 360,
+    "current_calls": 240,
+    "full_state_payload": {
+      "bytes": 2504295,
+      "estimated_tokens": 626213
+    },
+    "compact_payload": {
+      "bytes": 341806,
+      "estimated_tokens": 85594
+    },
+    "equivalent_tasks": 60
+  },
+  "reductions": {
+    "tool_boundary_calls_pct": 33.33,
+    "serialized_payload_bytes_pct": 86.35,
+    "estimated_payload_tokens_pct": 86.33
+  },
+  "per_task": [
+    {
+      "task_id": "task-001",
+      "sku": "BENCH-0001",
+      "query": "调查 BENCH-0001 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 0,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 16351,
+        "estimated_tokens": 4090
+      },
+      "compact_payload": {
+        "bytes": 5727,
+        "estimated_tokens": 1434
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-002",
+      "sku": "BENCH-0002",
+      "query": "调查 BENCH-0002 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 1,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 20709,
+        "estimated_tokens": 5179
+      },
+      "compact_payload": {
+        "bytes": 6477,
+        "estimated_tokens": 1621
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-003",
+      "sku": "BENCH-0003",
+      "query": "调查 BENCH-0003 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 5,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 25328,
+        "estimated_tokens": 6334
+      },
+      "compact_payload": {
+        "bytes": 5310,
+        "estimated_tokens": 1330
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-004",
+      "sku": "BENCH-0004",
+      "query": "调查 BENCH-0004 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 20,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 38455,
+        "estimated_tokens": 9617
+      },
+      "compact_payload": {
+        "bytes": 5118,
+        "estimated_tokens": 1282
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-005",
+      "sku": "BENCH-0005",
+      "query": "调查 BENCH-0005 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 80,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 109084,
+        "estimated_tokens": 27273
+      },
+      "compact_payload": {
+        "bytes": 6331,
+        "estimated_tokens": 1585
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-006",
+      "sku": "BENCH-0006",
+      "query": "调查 BENCH-0006 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 0,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 18890,
+        "estimated_tokens": 4724
+      },
+      "compact_payload": {
+        "bytes": 5862,
+        "estimated_tokens": 1467
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-007",
+      "sku": "BENCH-0007",
+      "query": "调查 BENCH-0007 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 1,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 18850,
+        "estimated_tokens": 4716
+      },
+      "compact_payload": {
+        "bytes": 5018,
+        "estimated_tokens": 1257
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-008",
+      "sku": "BENCH-0008",
+      "query": "调查 BENCH-0008 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 5,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 27050,
+        "estimated_tokens": 6766
+      },
+      "compact_payload": {
+        "bytes": 5418,
+        "estimated_tokens": 1357
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-009",
+      "sku": "BENCH-0009",
+      "query": "调查 BENCH-0009 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 20,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 40999,
+        "estimated_tokens": 10252
+      },
+      "compact_payload": {
+        "bytes": 6062,
+        "estimated_tokens": 1517
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-010",
+      "sku": "BENCH-0010",
+      "query": "调查 BENCH-0010 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 80,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 93088,
+        "estimated_tokens": 23275
+      },
+      "compact_payload": {
+        "bytes": 6398,
+        "estimated_tokens": 1601
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-011",
+      "sku": "BENCH-0011",
+      "query": "调查 BENCH-0011 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 0,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 19070,
+        "estimated_tokens": 4770
+      },
+      "compact_payload": {
+        "bytes": 4968,
+        "estimated_tokens": 1245
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-012",
+      "sku": "BENCH-0012",
+      "query": "调查 BENCH-0012 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 1,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 22584,
+        "estimated_tokens": 5650
+      },
+      "compact_payload": {
+        "bytes": 5404,
+        "estimated_tokens": 1354
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-013",
+      "sku": "BENCH-0013",
+      "query": "调查 BENCH-0013 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 5,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 21758,
+        "estimated_tokens": 5441
+      },
+      "compact_payload": {
+        "bytes": 6232,
+        "estimated_tokens": 1560
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-014",
+      "sku": "BENCH-0014",
+      "query": "调查 BENCH-0014 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 20,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 42236,
+        "estimated_tokens": 10562
+      },
+      "compact_payload": {
+        "bytes": 6485,
+        "estimated_tokens": 1623
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-015",
+      "sku": "BENCH-0015",
+      "query": "调查 BENCH-0015 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 80,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 110217,
+        "estimated_tokens": 27557
+      },
+      "compact_payload": {
+        "bytes": 5316,
+        "estimated_tokens": 1332
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-016",
+      "sku": "BENCH-0016",
+      "query": "调查 BENCH-0016 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 0,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 19038,
+        "estimated_tokens": 4761
+      },
+      "compact_payload": {
+        "bytes": 4660,
+        "estimated_tokens": 1168
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-017",
+      "sku": "BENCH-0017",
+      "query": "调查 BENCH-0017 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 1,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 19654,
+        "estimated_tokens": 4917
+      },
+      "compact_payload": {
+        "bytes": 6321,
+        "estimated_tokens": 1583
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-018",
+      "sku": "BENCH-0018",
+      "query": "调查 BENCH-0018 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 5,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 25079,
+        "estimated_tokens": 6272
+      },
+      "compact_payload": {
+        "bytes": 6218,
+        "estimated_tokens": 1557
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-019",
+      "sku": "BENCH-0019",
+      "query": "调查 BENCH-0019 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 20,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 36661,
+        "estimated_tokens": 9169
+      },
+      "compact_payload": {
+        "bytes": 5022,
+        "estimated_tokens": 1258
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-020",
+      "sku": "BENCH-0020",
+      "query": "调查 BENCH-0020 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 80,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 111939,
+        "estimated_tokens": 27989
+      },
+      "compact_payload": {
+        "bytes": 5424,
+        "estimated_tokens": 1359
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-021",
+      "sku": "BENCH-0021",
+      "query": "调查 BENCH-0021 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 0,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 17824,
+        "estimated_tokens": 4457
+      },
+      "compact_payload": {
+        "bytes": 5702,
+        "estimated_tokens": 1427
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-022",
+      "sku": "BENCH-0022",
+      "query": "调查 BENCH-0022 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 1,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 19074,
+        "estimated_tokens": 4770
+      },
+      "compact_payload": {
+        "bytes": 6392,
+        "estimated_tokens": 1600
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-023",
+      "sku": "BENCH-0023",
+      "query": "调查 BENCH-0023 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 5,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 25248,
+        "estimated_tokens": 6315
+      },
+      "compact_payload": {
+        "bytes": 5320,
+        "estimated_tokens": 1333
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-024",
+      "sku": "BENCH-0024",
+      "query": "调查 BENCH-0024 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 20,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 44108,
+        "estimated_tokens": 11028
+      },
+      "compact_payload": {
+        "bytes": 5410,
+        "estimated_tokens": 1355
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-025",
+      "sku": "BENCH-0025",
+      "query": "调查 BENCH-0025 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 80,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 92022,
+        "estimated_tokens": 23006
+      },
+      "compact_payload": {
+        "bytes": 6238,
+        "estimated_tokens": 1562
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-026",
+      "sku": "BENCH-0026",
+      "query": "调查 BENCH-0026 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 0,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 19061,
+        "estimated_tokens": 4767
+      },
+      "compact_payload": {
+        "bytes": 6125,
+        "estimated_tokens": 1533
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-027",
+      "sku": "BENCH-0027",
+      "query": "调查 BENCH-0027 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 1,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 20798,
+        "estimated_tokens": 5202
+      },
+      "compact_payload": {
+        "bytes": 5310,
+        "estimated_tokens": 1330
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-028",
+      "sku": "BENCH-0028",
+      "query": "调查 BENCH-0028 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 5,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 24394,
+        "estimated_tokens": 6102
+      },
+      "compact_payload": {
+        "bytes": 5114,
+        "estimated_tokens": 1281
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-029",
+      "sku": "BENCH-0029",
+      "query": "调查 BENCH-0029 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 20,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 41181,
+        "estimated_tokens": 10296
+      },
+      "compact_payload": {
+        "bytes": 6329,
+        "estimated_tokens": 1585
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-030",
+      "sku": "BENCH-0030",
+      "query": "调查 BENCH-0030 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 80,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 109968,
+        "estimated_tokens": 27494
+      },
+      "compact_payload": {
+        "bytes": 6224,
+        "estimated_tokens": 1558
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-031",
+      "sku": "BENCH-0031",
+      "query": "调查 BENCH-0031 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 0,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 17244,
+        "estimated_tokens": 4315
+      },
+      "compact_payload": {
+        "bytes": 4564,
+        "estimated_tokens": 1144
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-032",
+      "sku": "BENCH-0032",
+      "query": "调查 BENCH-0032 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 1,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 22512,
+        "estimated_tokens": 5631
+      },
+      "compact_payload": {
+        "bytes": 5416,
+        "estimated_tokens": 1357
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-033",
+      "sku": "BENCH-0033",
+      "query": "调查 BENCH-0033 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 5,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 24013,
+        "estimated_tokens": 6005
+      },
+      "compact_payload": {
+        "bytes": 6058,
+        "estimated_tokens": 1517
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-034",
+      "sku": "BENCH-0034",
+      "query": "调查 BENCH-0034 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 20,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 36885,
+        "estimated_tokens": 9223
+      },
+      "compact_payload": {
+        "bytes": 6396,
+        "estimated_tokens": 1601
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-035",
+      "sku": "BENCH-0035",
+      "query": "调查 BENCH-0035 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 80,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 110137,
+        "estimated_tokens": 27538
+      },
+      "compact_payload": {
+        "bytes": 5326,
+        "estimated_tokens": 1334
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-036",
+      "sku": "BENCH-0036",
+      "query": "调查 BENCH-0036 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 0,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 20936,
+        "estimated_tokens": 5238
+      },
+      "compact_payload": {
+        "bytes": 5052,
+        "estimated_tokens": 1266
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-037",
+      "sku": "BENCH-0037",
+      "query": "调查 BENCH-0037 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 1,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 18008,
+        "estimated_tokens": 4503
+      },
+      "compact_payload": {
+        "bytes": 6232,
+        "estimated_tokens": 1560
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-038",
+      "sku": "BENCH-0038",
+      "query": "调查 BENCH-0038 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 5,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 25261,
+        "estimated_tokens": 6317
+      },
+      "compact_payload": {
+        "bytes": 6485,
+        "estimated_tokens": 1623
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-039",
+      "sku": "BENCH-0039",
+      "query": "调查 BENCH-0039 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 20,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 42322,
+        "estimated_tokens": 10582
+      },
+      "compact_payload": {
+        "bytes": 5316,
+        "estimated_tokens": 1332
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-040",
+      "sku": "BENCH-0040",
+      "query": "调查 BENCH-0040 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 80,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 94658,
+        "estimated_tokens": 23667
+      },
+      "compact_payload": {
+        "bytes": 5120,
+        "estimated_tokens": 1283
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-041",
+      "sku": "BENCH-0041",
+      "query": "调查 BENCH-0041 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 0,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 18006,
+        "estimated_tokens": 4505
+      },
+      "compact_payload": {
+        "bytes": 5969,
+        "estimated_tokens": 1495
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-042",
+      "sku": "BENCH-0042",
+      "query": "调查 BENCH-0042 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 1,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 20538,
+        "estimated_tokens": 5136
+      },
+      "compact_payload": {
+        "bytes": 6214,
+        "estimated_tokens": 1555
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-043",
+      "sku": "BENCH-0043",
+      "query": "调查 BENCH-0043 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 5,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 22600,
+        "estimated_tokens": 5651
+      },
+      "compact_payload": {
+        "bytes": 5018,
+        "estimated_tokens": 1257
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-044",
+      "sku": "BENCH-0044",
+      "query": "调查 BENCH-0044 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 20,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 44036,
+        "estimated_tokens": 11011
+      },
+      "compact_payload": {
+        "bytes": 5422,
+        "estimated_tokens": 1358
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-045",
+      "sku": "BENCH-0045",
+      "query": "调查 BENCH-0045 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 80,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 108891,
+        "estimated_tokens": 27225
+      },
+      "compact_payload": {
+        "bytes": 6060,
+        "estimated_tokens": 1517
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-046",
+      "sku": "BENCH-0046",
+      "query": "调查 BENCH-0046 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 0,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 17417,
+        "estimated_tokens": 4357
+      },
+      "compact_payload": {
+        "bytes": 5887,
+        "estimated_tokens": 1474
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-047",
+      "sku": "BENCH-0047",
+      "query": "调查 BENCH-0047 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 1,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 20710,
+        "estimated_tokens": 5180
+      },
+      "compact_payload": {
+        "bytes": 5318,
+        "estimated_tokens": 1332
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-048",
+      "sku": "BENCH-0048",
+      "query": "调查 BENCH-0048 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 5,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 27122,
+        "estimated_tokens": 6783
+      },
+      "compact_payload": {
+        "bytes": 5406,
+        "estimated_tokens": 1354
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-049",
+      "sku": "BENCH-0049",
+      "query": "调查 BENCH-0049 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 20,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 35819,
+        "estimated_tokens": 8956
+      },
+      "compact_payload": {
+        "bytes": 6236,
+        "estimated_tokens": 1561
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-050",
+      "sku": "BENCH-0050",
+      "query": "调查 BENCH-0050 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 80,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 110150,
+        "estimated_tokens": 27540
+      },
+      "compact_payload": {
+        "bytes": 6491,
+        "estimated_tokens": 1625
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-051",
+      "sku": "BENCH-0051",
+      "query": "调查 BENCH-0051 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 0,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 19150,
+        "estimated_tokens": 4790
+      },
+      "compact_payload": {
+        "bytes": 4958,
+        "estimated_tokens": 1242
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-052",
+      "sku": "BENCH-0052",
+      "query": "调查 BENCH-0052 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 1,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 20644,
+        "estimated_tokens": 5162
+      },
+      "compact_payload": {
+        "bytes": 5114,
+        "estimated_tokens": 1281
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-053",
+      "sku": "BENCH-0053",
+      "query": "调查 BENCH-0053 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 5,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 24195,
+        "estimated_tokens": 6050
+      },
+      "compact_payload": {
+        "bytes": 6325,
+        "estimated_tokens": 1583
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-054",
+      "sku": "BENCH-0054",
+      "query": "调查 BENCH-0054 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 20,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 42065,
+        "estimated_tokens": 10519
+      },
+      "compact_payload": {
+        "bytes": 6222,
+        "estimated_tokens": 1557
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-055",
+      "sku": "BENCH-0055",
+      "query": "调查 BENCH-0055 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 80,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 92864,
+        "estimated_tokens": 23219
+      },
+      "compact_payload": {
+        "bytes": 5024,
+        "estimated_tokens": 1259
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-056",
+      "sku": "BENCH-0056",
+      "query": "调查 BENCH-0056 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 0,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 20856,
+        "estimated_tokens": 5216
+      },
+      "compact_payload": {
+        "bytes": 5062,
+        "estimated_tokens": 1268
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-057",
+      "sku": "BENCH-0057",
+      "query": "调查 BENCH-0057 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 1,
+      "competitor_count": 0,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 19461,
+        "estimated_tokens": 4867
+      },
+      "compact_payload": {
+        "bytes": 6050,
+        "estimated_tokens": 1515
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-058",
+      "sku": "BENCH-0058",
+      "query": "调查 BENCH-0058 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 5,
+      "competitor_count": 1,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 22824,
+        "estimated_tokens": 5708
+      },
+      "compact_payload": {
+        "bytes": 6392,
+        "estimated_tokens": 1600
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-059",
+      "sku": "BENCH-0059",
+      "query": "调查 BENCH-0059 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 20,
+      "competitor_count": 3,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 42234,
+        "estimated_tokens": 10560
+      },
+      "compact_payload": {
+        "bytes": 5324,
+        "estimated_tokens": 1334
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    },
+    {
+      "task_id": "task-060",
+      "sku": "BENCH-0060",
+      "query": "调查 BENCH-0060 的库存、订单和竞品，给出带约束的补货建议",
+      "order_count": 80,
+      "competitor_count": 5,
+      "baseline_calls": 6,
+      "current_calls": 4,
+      "full_state_payload": {
+        "bytes": 112019,
+        "estimated_tokens": 28008
+      },
+      "compact_payload": {
+        "bytes": 5414,
+        "estimated_tokens": 1356
+      },
+      "equivalent_analysis": true,
+      "evidence_available_in_mysql": true
+    }
+  ],
+  "production_write_performed": false,
+  "llm_invoked": false
+}

@@ -1,0 +1,10 @@
+{
+  "verified_at": "2026-10-21T11:34:27.371Z",
+  "mysql_process_restarted": true,
+  "workflow_revision_recovered": 7,
+  "history_versions_recovered": 7,
+  "purchase_replay_equal": true,
+  "arrival_replay_equal": true,
+  "stock_after_retries": 150,
+  "production_write_performed": false
+}

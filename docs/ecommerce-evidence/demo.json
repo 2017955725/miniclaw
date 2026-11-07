@@ -1,0 +1,157 @@
+{
+  "generated_at": "2026-10-21T11:32:41.345Z",
+  "environment": "local_mysql_test",
+  "workspace": "demo:a6bd815b-4455-4b10-a3c0-e99a4f2a0e3d",
+  "unknowns_before": [
+    "订单下单时间（只有数据采集时间）",
+    "库存扣减时机（无法判断 pending 订单是否已占用库存）",
+    "历史销售趋势",
+    "在途补货计划",
+    "其他渠道库存占用",
+    "供应商和补货周期"
+  ],
+  "workflow": {
+    "workflow_id": "ecommerce_wf_bfe74f36-79cc-43fe-b664-1f0ed89a900c",
+    "revision": 7,
+    "current_stage": "completed",
+    "sku": "SKU-002",
+    "monitor": {
+      "timestamp": "2026-10-21T11:32:41.231Z",
+      "next_cursor": null,
+      "total_products": 1,
+      "low_stock_products": [
+        {
+          "gap": 70,
+          "sku": "SKU-002",
+          "name": "智能手环 运动版",
+          "stock": 80,
+          "safety_stock": 150
+        }
+      ]
+    },
+    "analysis": {
+      "facts": [
+        "商品 SKU-002 智能手环 运动版，当前库存 80，安全库存 150（数据来源：ecommerce_get_product，采集时间：2026-10-21T11:32:41.197Z）",
+        "有 1 条 pending 订单，总数量 1 件（数据来源：ecommerce_get_orders，采集时间：2026-10-21T11:32:41.197Z）",
+        "共 1 条订单记录（数据来源：ecommerce_get_orders，采集时间：2026-10-21T11:32:41.197Z）",
+        "竞品价格：电商平台A 139元，我方售价 149元（数据来源：ecommerce_get_competitors，采集时间：2026-10-21T11:32:41.197Z）",
+        "数据采集时间范围为 2026-10-21T11:32:41.197Z 至 2026-10-21T11:32:41.197Z（数据来源：Detect 证据；不同采集时间不代表同时刻业务快照）",
+        "业务口径数据来源 explicit_demo_parameters; confirmed_by=demo-human，观察时间 2026-10-21T11:32:41.267Z：{\"source\":\"explicit_demo_parameters; confirmed_by=demo-human\",\"observed_at\":\"2026-10-21T11:32:41.267Z\",\"supplier_id\":\"DEMO-SUPPLIER\",\"inbound_stock\":0,\"sales_last_7d\":35,\"lead_time_days\":3,\"reserved_stock\":0,\"inventory_policy\":\"on_hand\",\"other_channel_reserved\":0}"
+      ],
+      "unknowns": ["订单下单时间（只有数据采集时间）"],
+      "inferences": [
+        "推断：低于安全线的差值为 70 件，值得进一步评估补货（前提：安全库存设置合理；采购数量仍需人工评估）",
+        "推断：可能面临缺货风险（前提：销量与交付周期需联合评估；近7天销量 35，交付天数 3，在途量 0）"
+      ]
+    },
+    "recommendations": [
+      {
+        "action": "consider_restock",
+        "reason": "建议：库存低于安全线 70 件",
+        "constraints": [
+          "需要先补充调查中列出的未知信息",
+          "需要人工评估补货数量",
+          "须经人工审批后进入独立的受控执行链路"
+        ]
+      },
+      {
+        "action": "investigate_further",
+        "reason": "建议：补充调查，当前仍有 1 项待确认；未知项数量不能代替执行前的关键字段校验",
+        "constraints": ["订单下单时间（只有数据采集时间）"]
+      }
+    ],
+    "product": {
+      "sku": "SKU-002",
+      "name": "智能手环 运动版",
+      "stock": 80,
+      "cost_price": 65,
+      "data_source": "local_test_fixture",
+      "collected_at": "2026-10-21T11:32:41.197Z",
+      "safety_stock": 150,
+      "selling_price": 149
+    },
+    "evidence_count": 7,
+    "evidence_time_range": {
+      "latest": "2026-10-21T11:32:41.197Z",
+      "earliest": "2026-10-21T11:32:41.197Z"
+    },
+    "evidence_detail": "Full evidence available through authenticated workflow view; never substitute memory for live stock."
+  },
+  "preview": {
+    "mode": "dry_run",
+    "environment": "test",
+    "preview_only": true,
+    "database_write_performed": false,
+    "approval": {
+      "workspace": "demo:a6bd815b-4455-4b10-a3c0-e99a4f2a0e3d",
+      "id": "ec_ap_8c88d424-0e58-4aed-9afd-cb1ecd60827a",
+      "workflow_id": "ecommerce_wf_bfe74f36-79cc-43fe-b664-1f0ed89a900c",
+      "revision": 1,
+      "status": "pending",
+      "spec": {
+        "sku": "SKU-002",
+        "quantity": 70,
+        "environment": "test",
+        "supplier_id": "DEMO-SUPPLIER",
+        "product_version": 2,
+        "unit_cost_cents": 6500,
+        "total_cost_cents": 455000,
+        "workflow_revision": 7
+      },
+      "history": [],
+      "created_at": "2026-10-21T11:32:41.304Z",
+      "expires_at": "2026-10-21T12:02:41.304Z"
+    },
+    "effect": "Creates purchase order; stock changes ONLY on a separate test goods receipt."
+  },
+  "approved": {
+    "workspace": "demo:a6bd815b-4455-4b10-a3c0-e99a4f2a0e3d",
+    "id": "ec_ap_8c88d424-0e58-4aed-9afd-cb1ecd60827a",
+    "workflow_id": "ecommerce_wf_bfe74f36-79cc-43fe-b664-1f0ed89a900c",
+    "revision": 2,
+    "status": "approved",
+    "spec": {
+      "sku": "SKU-002",
+      "quantity": 70,
+      "environment": "test",
+      "supplier_id": "DEMO-SUPPLIER",
+      "product_version": 2,
+      "unit_cost_cents": 6500,
+      "total_cost_cents": 455000,
+      "workflow_revision": 7
+    },
+    "history": [
+      {
+        "at": "2026-10-21T11:32:41.313Z",
+        "actor": "demo-human",
+        "reason": "Explicit local demonstration; 70 is a chosen test quantity, not an optimized model prediction",
+        "decision": "approved"
+      }
+    ],
+    "created_at": "2026-10-21T11:32:41.304Z",
+    "expires_at": "2026-10-21T12:02:41.304Z"
+  },
+  "applied": {
+    "mode": "apply",
+    "environment": "test",
+    "status": "purchase_order_created",
+    "purchase_order_id": "ec_po_34d2a5b4-1164-47f7-ab28-db0111e92886",
+    "sku": "SKU-002",
+    "quantity": 70,
+    "stock": 80,
+    "test_database_write_performed": true,
+    "production_write_performed": false
+  },
+  "replay_equal": true,
+  "receipt": {
+    "status": "received",
+    "environment": "test",
+    "purchase_order_id": "ec_po_34d2a5b4-1164-47f7-ab28-db0111e92886",
+    "sku": "SKU-002",
+    "stock_before": 80,
+    "stock_after": 150,
+    "ledger_id": "ec_il_e28d1af2-bb51-45ee-ae2d-ccd7b5fa5f0b",
+    "test_database_write_performed": true
+  },
+  "production_write_performed": false
+}

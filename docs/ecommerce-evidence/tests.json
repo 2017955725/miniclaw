@@ -1,0 +1,9 @@
+{
+  "verified_at": "2026-10-21T11:36:03.083Z",
+  "total": 228,
+  "passed": 228,
+  "failed": 0,
+  "pending": 0,
+  "files": 30,
+  "command": "vitest run tests/mcp tests/pi tests/runtime tests/ecommerce tests/routes-ecommerce.test.ts tests/routes-workspace-memory.test.ts tests/workspace-memory-runtime.test.ts"
+}

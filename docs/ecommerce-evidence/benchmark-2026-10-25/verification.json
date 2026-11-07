@@ -1,0 +1,41 @@
+{
+  "verified_at": "2026-10-25T13:03:33.117Z",
+  "independent_recalculation_passed": true,
+  "mysql_row_counts_verified": true,
+  "baselineCalls": 360,
+  "currentCalls": 240,
+  "before_estimated_tokens": 626213,
+  "after_estimated_tokens": 85594,
+  "order_count_strata": {
+    "0": {
+      "tasks": 12,
+      "before": 55990,
+      "after": 16163,
+      "reduction_pct": 71.13
+    },
+    "1": {
+      "tasks": 12,
+      "before": 60913,
+      "after": 17345,
+      "reduction_pct": 71.52
+    },
+    "5": {
+      "tasks": 12,
+      "before": 73744,
+      "after": 17352,
+      "reduction_pct": 76.47
+    },
+    "20": {
+      "tasks": 12,
+      "before": 121775,
+      "after": 17363,
+      "reduction_pct": 85.74
+    },
+    "80": {
+      "tasks": 12,
+      "before": 313791,
+      "after": 17371,
+      "reduction_pct": 94.46
+    }
+  }
+}
