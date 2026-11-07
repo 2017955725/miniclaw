@@ -53,9 +53,7 @@ export async function resolvePiProvider(
   }
   const split = splitModelRef(rawModel || 'claude-sonnet');
   const custom = input.endpointKind === 'custom' || !!input.baseUrl?.trim();
-  const providerId = custom
-    ? `miniclaw-${split.providerId}`
-    : split.providerId;
+  const providerId = custom ? `miniclaw-${split.providerId}` : split.providerId;
 
   if (custom) {
     if (!input.baseUrl?.trim()) {
@@ -90,9 +88,10 @@ export async function resolvePiProvider(
     modelRuntime.getModel(providerId, split.modelId) ||
     (custom
       ? undefined
-      : (
-          getModel as unknown as (provider: string, model: string) => PiModel
-        )(providerId, split.modelId));
+      : (getModel as unknown as (provider: string, model: string) => PiModel)(
+          providerId,
+          split.modelId,
+        ));
   if (!model) {
     throw new Error(
       `Pi model not found: ${providerId}/${split.modelId}. Configure ANTHROPIC_MODEL or Pi models.json.`,
