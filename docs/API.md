@@ -580,3 +580,5 @@ Agent 镜像只由 `main` 分支的 GitHub Actions 构建并发布。该接口�
 - `docker_pull_complete`
 
 精确联合类型和字段以 `src/web.ts`、`src/types.ts` 与 `shared/stream-event.ts` 为准。
+
+- src/routes/ecommerce.ts �� ���̲�����ɹ��ӿ�
