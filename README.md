@@ -213,31 +213,31 @@ npm run desktop:package
 
 ## 常用命令
 
-| 命令 | 说明 |
-| --- | --- |
-| `npm run dev:all` | 启动 Backend 与 Vite Web Client |
-| `npm run build:all` | 构建 Backend、Web Client 与 Agent Runner |
-| `npm run typecheck` | 检查 Backend TypeScript |
-| `make typecheck` | 执行 Backend、Web、Agent Runner 的完整类型与文档检查 |
-| `npm test -- --run` | 运行 Vitest 测试 |
-| `npm run desktop:typecheck` | 检查 Electron Main/Preload 类型 |
-| `npm run desktop:build` | 构建 Electron Main/Preload bundle |
-| `npm run desktop:package:dir` | 构建并生成目录形式的桌面应用 |
-| `npm run desktop:package` | 构建并打包桌面应用 |
-| `make backup` | 创建运行时数据备份 |
-| `make restore FILE=...` | 恢复指定备份 |
-| `make status` | 查看 Backend、日志和 Docker 状态 |
-| `make stop` | 停止当前端口上的 Miniclaw 服务 |
+| 命令                          | 说明                                                 |
+| ----------------------------- | ---------------------------------------------------- |
+| `npm run dev:all`             | 启动 Backend 与 Vite Web Client                      |
+| `npm run build:all`           | 构建 Backend、Web Client 与 Agent Runner             |
+| `npm run typecheck`           | 检查 Backend TypeScript                              |
+| `make typecheck`              | 执行 Backend、Web、Agent Runner 的完整类型与文档检查 |
+| `npm test -- --run`           | 运行 Vitest 测试                                     |
+| `npm run desktop:typecheck`   | 检查 Electron Main/Preload 类型                      |
+| `npm run desktop:build`       | 构建 Electron Main/Preload bundle                    |
+| `npm run desktop:package:dir` | 构建并生成目录形式的桌面应用                         |
+| `npm run desktop:package`     | 构建并打包桌面应用                                   |
+| `make backup`                 | 创建运行时数据备份                                   |
+| `make restore FILE=...`       | 恢复指定备份                                         |
+| `make status`                 | 查看 Backend、日志和 Docker 状态                     |
+| `make stop`                   | 停止当前端口上的 Miniclaw 服务                       |
 
 ## 配置入口
 
-| 环境变量 | 用途 | 默认值 |
-| --- | --- | --- |
-| `MINICLAW_SERVER_URL` | Electron 要连接的 Backend 地址 | `http://127.0.0.1:3000` |
-| `MINICLAW_RENDERER_URL` | Electron 要加载的 Renderer 地址，适合本地 Vite 开发 | 与 Server URL 相同 |
-| `MINICLAW_CONTAINER_IMAGE` | Agent Runner 使用的容器镜像 | `ghcr.io/2017955725/miniclaw-agent:latest` |
-| `CONTAINER_IMAGE` | 容器镜像的兼容覆盖项 | 同上 |
-| `WEB_PORT` | Makefile 启动 Backend 使用的端口 | `3000` |
+| 环境变量                   | 用途                                                | 默认值                                     |
+| -------------------------- | --------------------------------------------------- | ------------------------------------------ |
+| `MINICLAW_SERVER_URL`      | Electron 要连接的 Backend 地址                      | `http://127.0.0.1:3000`                    |
+| `MINICLAW_RENDERER_URL`    | Electron 要加载的 Renderer 地址，适合本地 Vite 开发 | 与 Server URL 相同                         |
+| `MINICLAW_CONTAINER_IMAGE` | Agent Runner 使用的容器镜像                         | `ghcr.io/2017955725/miniclaw-agent:latest` |
+| `CONTAINER_IMAGE`          | 容器镜像的兼容覆盖项                                | 同上                                       |
+| `WEB_PORT`                 | Makefile 启动 Backend 使用的端口                    | `3000`                                     |
 
 不要把 API Key、Session Cookie 或其他凭证写入命令行历史、截图或提交到仓库。远程部署时使用 HTTPS/WSS，并为反向代理、Cookie 和访问控制配置独立的安全边界。
 
@@ -308,4 +308,4 @@ npm run desktop:build
 
 Miniclaw 使用 MIT License，详见 [`LICENSE`](LICENSE)。
 
-Miniclaw �������������ȹ���ģ�ͣ��� Agent��Workspace��Memory��Tools ���Զ�������Χ�Ƴ���ִ�еĹ�����Эͬ���С�
+Miniclaw �������������ȹ���ģ�ͣ��� Agent��Workspace��Memory��Tools ���Զ�������Χ�Ƴ���ִ�еĹ�����Эͬ���С�
